@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Counter } from '../models/counter.model';
 
 import { CountGroupComponent } from './count-group.component';
 
@@ -28,5 +29,29 @@ describe('CountGroupComponent', () => {
     component.doCreateCounter()
     // than
     expect(component.counters.length).toBe(1) 
+  });
+
+  it('should return counter group sum when sumCounts', () => {
+    // given
+    component.counters = [new Counter(1), new Counter(2)]
+
+    // when
+    const total = component.sumCounts();
+    
+    // than
+    expect(total).toEqual(3)
+  });
+
+  it('should reset sum group sum when sumCounts', () => {
+    // given
+    component.counters = [new Counter(1), new Counter(2)]
+
+    // when
+    component.reset();
+
+    const total = component.sumCounts();
+    
+    // than
+    expect(total).toEqual(0)
   });
 });
