@@ -16,4 +16,7 @@ export class CounterComponent implements OnInit {
   increase(): void {
     this.count = this.count + 1
   }
+  decrease(): void {
+    this.count = this.count - 1
+  }
 }
