@@ -44,4 +44,24 @@ describe('CounterComponent', () => {
     const displayCount = fixture.nativeElement.querySelector('[data-test="displayCount"]')
     expect(displayCount.textContent).toEqual('number:-1')
   });
+
+  it('should minus button disappear when count number less than 0', () => {
+    // given
+    component.count = -1;
+    // when
+    fixture.detectChanges();
+    // then
+    const minusBtn = fixture.nativeElement.querySelector('[data-test="minusBtn"]')
+    expect(minusBtn).toBeFalsy()
+  });
+
+  it('should plus button disappear when count number greater than 10', () => {
+    // given
+    component.count = 11;
+    // when
+    fixture.detectChanges();
+    // then
+    const plusBtn = fixture.nativeElement.querySelector('[data-test="plusBtn"]')
+    expect(plusBtn).toBeFalsy()
+  });
 });
