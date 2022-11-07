@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { reduce } from 'rxjs';
 import { Counter } from '../models/counter.model';
+import { CounterService } from '../services/counter.service';
 
 @Component({
   selector: 'app-count-group',
@@ -9,7 +10,9 @@ import { Counter } from '../models/counter.model';
 })
 export class CountGroupComponent implements OnInit {
   counters: Counter[] = []
-  constructor() { }
+  constructor(private counterService: CounterService) {
+    console.log(counterService.counter)
+  }
 
   ngOnInit(): void {
   }
@@ -19,10 +22,7 @@ export class CountGroupComponent implements OnInit {
   }
 
   sumCounts(): number { 
-    let total = 0
-    for (const counter of this.counters) { 
-      total += counter.count;
-    }
+    const total = this.counterService.sumCounter(this.counters)
     return total
   }
 
