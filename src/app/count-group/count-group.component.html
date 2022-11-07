@@ -1,4 +1,6 @@
-<p>count-group works!</p>
+<p nz-typography nzType="danger">count-group works!</p>
 <button (click)="doCreateCounter()">Create counter</button>
-<app-counter *ngFor="let item of counters" [counter]="item"></app-counter>
+<nz-layout>
+        <nz-content><app-counter *ngFor="let item of counters" [counter]="item"></app-counter></nz-content>
+</nz-layout>
 <div>{{sumCounts()}}</div><button (click)="reset()">reset</button>
